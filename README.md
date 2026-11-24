@@ -51,4 +51,13 @@ O projeto segue a arquitetura em pacotes proposta para separação de responsabi
 
 ## 5. Registro de Prompts de IA Utilizados
 
-- **Implementação da tela Swing (`TelaClinicaVeterinaria`) e `Main`:** gerada a interface gráfica com eventos, validações e `JOptionPane`, testada manualmente em todos os fluxos de cadastro, baixa, cancelamento, pesquisa, ordenação e tratamento de erros.
+- **Implementação da tela Swing (`TelaClinicaVeterinaria`) e `Main`:** "Me ajuda a implementar a tela principal desse projeto usando Swing"
+
+
+- **Regra de negócio:** "Como faço pra não deixar cadastrar duas consultas no mesmo horário?"
+
+
+- **Ordenação:** "Como faço pra ordenar as consultas pelo horário usando Comparable?"ç
+
+
+- **Revisão:** "Confere se meu projeto tem tudo que o professor pediu no PDF."]
