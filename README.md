@@ -51,13 +51,100 @@ O projeto segue a arquitetura em pacotes proposta para separação de responsabi
 
 ## 5. Registro de Prompts de IA Utilizados
 
-- **Implementação da tela Swing (`TelaClinicaVeterinaria`) e `Main`:** "Me ajuda a implementar a tela principal desse projeto usando Swing"
+### 1. Implementação da tela Swing
 
+**Prompt utilizado:** "Me ajuda a implementar a tela principal desse projeto usando Swing"
 
-- **Regra de negócio:** "Como faço pra não deixar cadastrar duas consultas no mesmo horário?"
+**O que foi feito:** Auxílio na criação da tela principal, na configuração da janela e na organização dos componentes da interface gráfica.
 
+**Arquivo:** `TelaClinicaVeterinaria.java`
 
-- **Ordenação:** "Como faço pra ordenar as consultas pelo horário usando Comparable?"
+```java
+public TelaClinicaVeterinaria() {
+    super("Clínica Veterinária - Controle de Consultas");
+    configurarJanela();
+    montarLayout();
+    registrarEventos();
+    atualizarAreaRelatorio("Sistema iniciado. Nenhuma consulta cadastrada ainda.");
+}
 
+private void configurarJanela() {
+    setSize(820, 560);
+    setLocationRelativeTo(null);
+    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+}
+```
 
-- **Revisão:** "Confere se meu projeto tem tudo que o professor pediu no PDF."
+Também foi trabalhada a inicialização da tela principal.
+
+**Arquivo:** `Main.java`
+
+```java
+public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -> {
+        TelaClinicaVeterinaria tela = new TelaClinicaVeterinaria();
+        tela.setVisible(true);
+    });
+}
+```
+
+### 2. Regra de negócio
+
+**Prompt utilizado:** "Como faço pra não deixar cadastrar duas consultas no mesmo horário?"
+
+**O que foi feito:** Validação que percorre a lista de consultas e verifica se já existe uma consulta com o mesmo ID ou horário. Consultas canceladas não bloqueiam novos agendamentos no mesmo horário.
+
+**Arquivo:** `TelaClinicaVeterinaria.java`
+
+```java
+private void validarDisponibilidade(int id, LocalDateTime dataHora) throws HorarioIndisponivelException {
+    for (ConsultaPet c : consultas) {
+        if (c.getId() == id) {
+            throw new HorarioIndisponivelException(
+                    "Já existe uma consulta cadastrada com o ID #" + id + "."
+            );
+        }
+        boolean ativa = !"CANCELADA".equalsIgnoreCase(c.getStatus());
+        if (ativa && c.getDataHora().equals(dataHora)) {
+            throw new HorarioIndisponivelException(
+                    "Já existe consulta marcada para " + dataHora.format(ConsultaPet.FORMATO_DATA_HORA)
+                            + " (Pet: " + c.getNomePet() + ")."
+            );
+        }
+    }
+}
+```
+
+### 3. Ordenação das consultas
+
+**Prompt utilizado:** "Como faço pra ordenar as consultas pelo horário usando Comparable?"
+
+**O que foi feito:** Implementação do método `compareTo()` para organizar as consultas pela data e horário. Em caso de empate, a ordenação é feita pelo ID.
+
+**Arquivo:** `ConsultaPet.java`
+
+```java
+@Override
+public int compareTo(ConsultaPet outra) {
+    int cmpData = this.dataHora.compareTo(outra.dataHora);
+    if (cmpData != 0) {
+        return cmpData;
+    }
+    return Integer.compare(this.id, outra.id);
+}
+```
+
+Também foi utilizado o `Collections.sort()` para ordenar a lista.
+
+**Arquivo:** `TelaClinicaVeterinaria.java`
+
+```java
+private void ordenarConsultas() {
+    Collections.sort(consultas);
+    exibirTodasConsultas("Consultas ordenadas por data/horário (Collections.sort):");
+}
+```
+
+### 4. Revisão do projeto
+
+**Prompt utilizado:** "Confere se meu projeto tem tudo que o professor pediu no PDF."
