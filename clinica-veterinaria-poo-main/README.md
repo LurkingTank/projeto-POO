@@ -4,7 +4,9 @@ Trabalho Prático da disciplina **Programação Orientada a Objetos** (Prof. Me.
 
 ## 1. Identificação
 
-- **Aluno:** Andrews Morales Granadier
+- **Alunos:** 
+Gabriel Filipini Tristão
+Pedro Gabriel de Freita
 
 ---
 
@@ -47,6 +49,4 @@ O projeto segue a arquitetura em pacotes proposta para separação de responsabi
 
 ## 5. Registro de Prompts de IA Utilizados
 
-- **Planejamento da estrutura e pacotes:** solicitado apoio para organizar o projeto do Tema 02 (Clínica Veterinária) em memória com `ArrayList`, Swing, exceção customizada, `Comparable` e interface, validado contra a estrutura de pacotes do enunciado.
-- **Criação das classes base (`Prontuario`, `HorarioIndisponivelException` e `ConsultaPet`):** solicitado passo a passo para criar os pacotes e classes iniciais; o código foi revisado e integrado no IntelliJ IDEA.
 - **Implementação da tela Swing (`TelaClinicaVeterinaria`) e `Main`:** gerada a interface gráfica com eventos, validações e `JOptionPane`, testada manualmente em todos os fluxos de cadastro, baixa, cancelamento, pesquisa, ordenação e tratamento de erros.
