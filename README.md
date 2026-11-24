@@ -57,7 +57,7 @@ O projeto segue a arquitetura em pacotes proposta para separação de responsabi
 - **Regra de negócio:** "Como faço pra não deixar cadastrar duas consultas no mesmo horário?"
 
 
-- **Ordenação:** "Como faço pra ordenar as consultas pelo horário usando Comparable?"ç
+- **Ordenação:** "Como faço pra ordenar as consultas pelo horário usando Comparable?"
 
 
-- **Revisão:** "Confere se meu projeto tem tudo que o professor pediu no PDF."]
+- **Revisão:** "Confere se meu projeto tem tudo que o professor pediu no PDF."
